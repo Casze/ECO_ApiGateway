@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Inject, OnModuleInit, Param, Post } from '@nestjs/common';
-import { USER_SERVICE_NAME ,CreateUserRequest, CreateUserResponse, FindOneUserRequest, FindOneUserResponse, DeleteUserRequest, DeleteUserResponse, UserServiceController } from './users.pb';
+import { USER_SERVICE_NAME ,CreateUserRequest, CreateUserResponse, FindOneUserRequest, FindOneUserResponse, DeleteUserRequest, DeleteUserResponse, UserServiceController, User, GetAllUsersResponse, GetAllUsersRequest } from './users.pb';
 import { ClientGrpc } from '@nestjs/microservices';
 import { isObservable, lastValueFrom } from 'rxjs';
 
@@ -49,4 +49,12 @@ export class UserController implements OnModuleInit {
     const data = await lastValueFrom(user);
     return data;
   }
+
+  // Cambios Felipe
+  @Get()
+  async getAllUsers(): Promise<GetAllUsersResponse> {
+    const users = await this.userService.getAllUsers();
+    return { users }; // Envuelve el array de usuarios en un objeto con la propiedad 'users'
+  }
+
 }

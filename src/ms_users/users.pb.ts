@@ -51,6 +51,7 @@ export interface UserServiceClient {
 }
 
 export interface UserServiceController {
+  getAllUsers(): User[] | PromiseLike<User[]>;
   createUser(
     request: CreateUserRequest,
   ): Promise<CreateUserResponse> | Observable<CreateUserResponse> | CreateUserResponse;
@@ -79,4 +80,13 @@ export function UserServiceControllerMethods() {
   };
 }
 
+//Cambios Felipe
+
+export interface GetAllUsersRequest {
+  // Puedes agregar campos aquí si tu solicitud lo requiere, como parámetros de paginación
+}
+
+export interface GetAllUsersResponse {
+  users: User[];
+}
 export const USER_SERVICE_NAME = "UserService";

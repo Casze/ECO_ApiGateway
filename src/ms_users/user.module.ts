@@ -13,7 +13,8 @@ import { USER_SERVICE_NAME, protobufPackage } from './users.pb';
         options: {
           url: '0.0.0.0:50051',
           package: protobufPackage,
-          protoPath: join('node_modules/microservicios/proto/users.proto'),
+          protoPath: join(__dirname, 'ms_users/users.proto'),
+
         },
       },
     ]),
